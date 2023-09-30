@@ -1,0 +1,115 @@
+body {
+  font-family: Arial, sans-serif;
+}
+
+ul.h-tree-ul {
+  list-style-type: none;
+}
+
+ul.tree li::before {
+  content: none; /* Remove the default marker */
+}
+
+.checkbox-group {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.checkbox-label {
+  display: inline-block;
+  /* width: 10px; */
+  height: 10px;
+
+  /* position: relative; */
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+/* .checkbox-label::before {
+  content: "";
+  display: inline-block;
+  width: 10px; /* Adjust the width as needed */
+/*  height: 10px; /* Adjust the height as needed */
+  /* background-color: #your-color; Set the background color */
+/*  margin-right: 5px; /* Adjust spacing between the square and label */
+/*  border: 1px solid black;
+  margin-right: 5px;
+} */
+
+.checkbox-label.checked::before {
+  background-color: white; /* Change background color to white */
+  content: "\2713"; /* Unicode checkmark symbol */
+  font-size: 12px; /* Adjust the size of the checkmark as needed */
+  color: black; /* Adjust the color of the checkmark as needed */
+  width: 12px; /* Adjust the width of the box containing the checkmark */
+  height: 12px; /* Adjust the height of the box containing the checkmark */
+  text-align: center;
+  display: inline-block;
+  margin-right: 5px; /* Adjust spacing between the box and label */
+  border: 1px solid black; /* Set a 1px black border around the box */
+}
+
+/* Style for unchecked */
+.checkbox-label.not-checked::before {
+  content: "";
+  display: inline-block;
+  width: 12px; /* Adjust the width as needed */
+  height: 12px; /* Adjust the height as needed */
+  background-color: transparent; /* Make the background transparent */
+  margin-right: 5px; /* Adjust spacing between the square and label */
+  border: 1px solid black; /* Set a 1px black border around the square */
+}
+
+/* Style for semi-checked */
+.checkbox-label.semi-checked::before {
+  content: "\df9b";
+  display: inline-block;
+  color: blue;
+  width: 10px; /* Adjust the width as needed */
+  height: 10px; /* Adjust the height as needed */
+  background-color: white; /* Set the background color to white */
+  margin-right: 5px; /* Adjust spacing between the square and label */
+  border: 1px solid black; /* Set a 1px black border around the square */
+  position: relative; /* Position relative for child square */
+  font-size: 9px;
+}
+
+/* Style for the smaller blue square inside the white square */
+.checkbox-label.semi-checked::before::after {
+  content: "";
+  display: block;
+  width: 6px; /* Adjust the width of the inner square */
+  height: 6px; /* Adjust the height of the inner square */
+  background-color: blue; /* Set the background color of the inner square to blue */
+  position: absolute; /* Position absolute to place it inside the white square */
+  top: 50%; /* Position it vertically in the middle */
+  left: 50%; /* Position it horizontally in the middle */
+  transform: translate(-50%, -50%); /* Center it perfectly */
+}
+
+input.h_tree_select_input{
+  display:none !important;
+}
+
+.triangle {
+  width: 0;
+  height: 0;
+  border-left: 5px solid black;  /* adjust size as needed */
+  border-right: 5px solid transparent; /* adjust size as needed */
+  border-top: 5px solid transparent;    /* adjust color and size as needed */
+  border-bottom: 5px solid transparent;    /* adjust color and size as needed */
+
+  /* display: inline; */
+  margin-right: 5px; /* spacing between triangle and label */
+  margin-left: -12px; /* spacing between triangle and label */
+  cursor: pointer;   /* make it look clickable */
+}
+
+.triangle.open {
+  border-left: 5px solid transparent;
+  /* border-right: 5px solid transparent; */
+  border-top: 5px solid black; /* change to indicate open state */
+    
+}
+
