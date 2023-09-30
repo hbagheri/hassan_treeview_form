@@ -24,13 +24,19 @@
     
     // Fetch tree data and checked data
     var treeData = JSON.parse($("#" + settings.treeDataSource).text());
-    var treeChecked = $("#" + settings.treeCheckedSource).text().split(settings.separator);
+    var treeChecked = JSON.parse($("#" + settings.treeCheckedSource).text());//.split(settings.separator);
     treeChild=addBranch(treeData);
     
     (this).append(treeChild);
-
+    // console.log(treeChecked);
     treeChecked.forEach(function(item){
       $("input[name='treeItems["+item+"]']").prop("checked",true);
+      id=$("input[name='treeItems["+item+"]']").attr("id");
+      label=$("label[for='"+id+"']");
+      console.log("label[for='"+id+"']",item,id,label.attr("class"));
+      $("label[for='"+id+"']").removeClass("not-checked");
+      $("label[for='"+id+"']").addClass("checked");
+      console.log(id);
     });
 
     mainUl =  $(this).find("ul:first");
@@ -94,6 +100,9 @@
       var childId=0
       
       $.each(branches, function (index, item) {
+        if (typeof(item.name) == "undefined"){
+          item.name=item.id
+        } 
         if (typeof(item.name) !== undefined){
           var path=((typeof(parentPath) !=="undefined")?parentPath+"-":"")+childId;
           var labelId = ((typeof(parentId) !== "undefined")? parentId  + "_":"") + (((typeof(item.id) != "undefined")?item.id:childId));
