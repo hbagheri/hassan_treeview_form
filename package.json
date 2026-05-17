@@ -1,0 +1,38 @@
+{
+  "name": "h-tree",
+  "version": "2.0.0",
+  "description": "A small dependency-free hierarchical tree-view with tri-state checkboxes",
+  "type": "module",
+  "main": "src/tree-view.js",
+  "exports": {
+    ".": "./src/tree-view.js"
+  },
+  "files": [
+    "src",
+    "styles.css",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "test": "node --test test/*.test.js",
+    "serve": "node -e \"import('node:http').then(http => import('node:fs').then(fs => import('node:path').then(path => { http.default.createServer((req,res) => { const u = req.url === '/' ? '/index.html' : req.url; const p = path.default.join(process.cwd(), u); try { const t = u.endsWith('.js') ? 'text/javascript' : u.endsWith('.css') ? 'text/css' : 'text/html'; res.writeHead(200, {'Content-Type': t}); res.end(fs.default.readFileSync(p)); } catch { res.writeHead(404); res.end('Not found'); } }).listen(8000, () => console.log('http://localhost:8000')); })))\""
+  },
+  "keywords": [
+    "tree",
+    "tree-view",
+    "checkbox",
+    "tri-state",
+    "vanilla-js",
+    "no-dependencies"
+  ],
+  "author": "Hassan Bagheri <bagheri.h@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hbagheri/hassan_treeview_form.git"
+  },
+  "bugs": {
+    "url": "https://github.com/hbagheri/hassan_treeview_form/issues"
+  },
+  "homepage": "https://github.com/hbagheri/hassan_treeview_form#readme"
+}

@@ -1,115 +1,84 @@
-body {
-  font-family: Arial, sans-serif;
+/* h-tree -- minimal hierarchical tree-view with tri-state checkboxes */
+
+.h-tree {
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+    line-height: 1.5;
+    color: #222;
 }
 
-ul.h-tree-ul {
-  list-style-type: none;
+.h-tree__ul {
+    list-style: none;
+    padding-left: 1.25rem;
+    margin: 0;
 }
 
-ul.tree li::before {
-  content: none; /* Remove the default marker */
+.h-tree > .h-tree__ul {
+    padding-left: 0;
 }
 
-.checkbox-group {
-  display: flex;
-  align-items: center;
-  margin-bottom: 10px;
+.h-tree__row {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.1rem 0;
 }
 
-.checkbox-label {
-  display: inline-block;
-  /* width: 10px; */
-  height: 10px;
-
-  /* position: relative; */
-  cursor: pointer;
-  margin-right: 10px;
+.h-tree__triangle {
+    display: inline-block;
+    width: 0;
+    height: 0;
+    margin-right: 0.25rem;
+    cursor: pointer;
+    border: 5px solid transparent;
+    border-left-color: #555;
+    transition: transform 0.15s ease;
 }
 
-/* .checkbox-label::before {
-  content: "";
-  display: inline-block;
-  width: 10px; /* Adjust the width as needed */
-/*  height: 10px; /* Adjust the height as needed */
-  /* background-color: #your-color; Set the background color */
-/*  margin-right: 5px; /* Adjust spacing between the square and label */
-/*  border: 1px solid black;
-  margin-right: 5px;
-} */
-
-.checkbox-label.checked::before {
-  background-color: white; /* Change background color to white */
-  content: "\2713"; /* Unicode checkmark symbol */
-  font-size: 12px; /* Adjust the size of the checkmark as needed */
-  color: black; /* Adjust the color of the checkmark as needed */
-  width: 12px; /* Adjust the width of the box containing the checkmark */
-  height: 12px; /* Adjust the height of the box containing the checkmark */
-  text-align: center;
-  display: inline-block;
-  margin-right: 5px; /* Adjust spacing between the box and label */
-  border: 1px solid black; /* Set a 1px black border around the box */
+.h-tree__triangle--open {
+    transform: rotate(90deg);
 }
 
-/* Style for unchecked */
-.checkbox-label.not-checked::before {
-  content: "";
-  display: inline-block;
-  width: 12px; /* Adjust the width as needed */
-  height: 12px; /* Adjust the height as needed */
-  background-color: transparent; /* Make the background transparent */
-  margin-right: 5px; /* Adjust spacing between the square and label */
-  border: 1px solid black; /* Set a 1px black border around the square */
+.h-tree__spacer {
+    display: inline-block;
+    width: 10px;
+    margin-right: 0.25rem;
 }
 
-/* Style for semi-checked */
-.checkbox-label.semi-checked::before {
-  content: "\df9b";
-  display: inline-block;
-  color: blue;
-  width: 10px; /* Adjust the width as needed */
-  height: 10px; /* Adjust the height as needed */
-  background-color: white; /* Set the background color to white */
-  margin-right: 5px; /* Adjust spacing between the square and label */
-  border: 1px solid black; /* Set a 1px black border around the square */
-  position: relative; /* Position relative for child square */
-  font-size: 9px;
+.h-tree__label {
+    cursor: pointer;
+    user-select: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
 }
 
-/* Style for the smaller blue square inside the white square */
-.checkbox-label.semi-checked::before::after {
-  content: "";
-  display: block;
-  width: 6px; /* Adjust the width of the inner square */
-  height: 6px; /* Adjust the height of the inner square */
-  background-color: blue; /* Set the background color of the inner square to blue */
-  position: absolute; /* Position absolute to place it inside the white square */
-  top: 50%; /* Position it vertically in the middle */
-  left: 50%; /* Position it horizontally in the middle */
-  transform: translate(-50%, -50%); /* Center it perfectly */
+.h-tree__label::before {
+    content: "";
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    border: 1px solid #555;
+    background: #fff;
+    border-radius: 2px;
+    box-sizing: border-box;
+    text-align: center;
+    font-size: 11px;
+    line-height: 12px;
+    color: #fff;
 }
 
-input.h_tree_select_input{
-  display:none !important;
+.h-tree__label--checked::before {
+    content: "\2713";  /* ✓ */
+    background: #2563eb;
+    border-color: #2563eb;
 }
 
-.triangle {
-  width: 0;
-  height: 0;
-  border-left: 5px solid black;  /* adjust size as needed */
-  border-right: 5px solid transparent; /* adjust size as needed */
-  border-top: 5px solid transparent;    /* adjust color and size as needed */
-  border-bottom: 5px solid transparent;    /* adjust color and size as needed */
-
-  /* display: inline; */
-  margin-right: 5px; /* spacing between triangle and label */
-  margin-left: -12px; /* spacing between triangle and label */
-  cursor: pointer;   /* make it look clickable */
+.h-tree__label--semi-checked::before {
+    content: "\2212";  /* − */
+    background: #6b7280;
+    border-color: #6b7280;
 }
 
-.triangle.open {
-  border-left: 5px solid transparent;
-  /* border-right: 5px solid transparent; */
-  border-top: 5px solid black; /* change to indicate open state */
-    
+.h-tree__label:hover {
+    color: #2563eb;
 }
-
