@@ -1,0 +1,20 @@
+# Dependency dirs
+/node_modules/
+/bower_components/
+
+# Build artefacts
+/dist/
+/build/
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+/.idea/
+/.vscode/
