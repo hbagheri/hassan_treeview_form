@@ -1,5 +1,7 @@
 # h-tree
 
+[![tests](https://github.com/hbagheri/hassan_treeview_form/actions/workflows/test.yml/badge.svg)](https://github.com/hbagheri/hassan_treeview_form/actions/workflows/test.yml)
+
 A small (~230 lines, zero dependencies) hierarchical tree-view widget with
 **tri-state checkboxes** — checking a parent checks every descendant, and
 checking a leaf rolls up so ancestors become fully or partially checked.
